@@ -1,13 +1,13 @@
 import json
 
-from jsonrpc.model.entity import Entity
+from jsonrpc_protocol.protocol.entity import Entity
 
 
-class JsonRpcBatch(Entity):
+class Batch(Entity):
 
     def __init__(self):
         super().__init__(is_batch=True)
-        self.elements = []
+        self.elements: list = []
 
     def dump(self) -> str:
         data = []

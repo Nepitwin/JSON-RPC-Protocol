@@ -1,7 +1,7 @@
 from enum import IntEnum
 
 
-class JsonRpcErrorCode(IntEnum):
+class ErrorCode(IntEnum):
     ParseError = -32700
     InvalidRequest = -32600
     MethodNotFound = -32601

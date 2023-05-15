@@ -1,11 +1,12 @@
 import json
 
-from jsonrpc.model.entity import Entity
+from jsonrpc_protocol.enum.protocolversion import ProtocolVersion
+from jsonrpc_protocol.protocol.entity import Entity
 
 
-class JsonRpcResponse(Entity):
+class Response(Entity):
 
-    def __init__(self, jsonrpc: str, result: object, id: str):
+    def __init__(self, jsonrpc: ProtocolVersion, result: object, id: str):
         super().__init__(is_response=True)
         self.jsonrpc = jsonrpc
         self.result = result
@@ -13,7 +14,7 @@ class JsonRpcResponse(Entity):
 
     def dump(self) -> str:
         return json.dumps({
-            "jsonrpc": self.jsonrpc,
+            "jsonrpc": self.jsonrpc.value,
             "result": self.result,
             "id": self.id
         })

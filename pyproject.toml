@@ -12,13 +12,6 @@ classifiers = [
     "Programming Language :: Python :: 3",
 ]
 
-dependencies = []
-
-[project.optional-dependencies]
-dev = [
-    "nose2==0.13.0",
-]
-
 [project.urls]
 homepage = "https://github.com/Nepitwin/JSON-RPC-Protocol"
 documentation = "https://github.com/Nepitwin/JSON-RPC-Protocol"

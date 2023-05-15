@@ -1,13 +1,14 @@
 import typing
 import json
 
-from jsonrpc.enum.jsonrpcerrorcode import JsonRpcErrorCode
-from jsonrpc.model.entity import Entity
+from jsonrpc_protocol.enum.protocolversion import ProtocolVersion
+from jsonrpc_protocol.enum.errorcode import ErrorCode
+from jsonrpc_protocol.protocol.entity import Entity
 
 
-class JsonRpcError(Entity):
+class Error(Entity):
 
-    def __init__(self, jsonrpc: str, error_code: int, id: typing.Optional[str] = None):
+    def __init__(self, jsonrpc: ProtocolVersion, error_code: int, id: typing.Optional[str] = None):
         super().__init__(is_error=True)
         self.jsonrpc = jsonrpc
         self.error = {
@@ -18,23 +19,23 @@ class JsonRpcError(Entity):
 
     def dump(self) -> str:
         return json.dumps({
-            "jsonrpc": self.jsonrpc,
+            "jsonrpc": self.jsonrpc.value,
             "error": self.error,
             "id": self.id
         })
 
     @staticmethod
     def _error_code_to_message(error_code: int):
-        if error_code == JsonRpcErrorCode.InvalidRequest:
+        if error_code == ErrorCode.InvalidRequest:
             return "Invalid Request"
 
-        if error_code == JsonRpcErrorCode.ParseError:
+        if error_code == ErrorCode.ParseError:
             return "Parse error"
 
-        if error_code == JsonRpcErrorCode.InternalError:
+        if error_code == ErrorCode.InternalError:
             return "Internal error"
 
-        if error_code == JsonRpcErrorCode.MethodNotFound:
+        if error_code == ErrorCode.MethodNotFound:
             return "Method not found"
 
         if -32000 >= error_code <= -32099:
