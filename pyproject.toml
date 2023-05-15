@@ -1,0 +1,35 @@
+[project]
+name = "JSON-RPC-Protocol"
+description = "Protocol only implementation from JSON-RPC"
+version = "0.0.1"
+
+authors = [
+    { name = "Andreas Sekulski", email = "andreas.sekulski@gmail.com"}
+]
+
+classifiers = [
+    "Programming Language :: Python :: 2",
+    "Programming Language :: Python :: 3",
+]
+
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "nose2==0.13.0",
+]
+
+[project.urls]
+homepage = "https://github.com/Nepitwin/JSON-RPC-Protocol"
+documentation = "https://github.com/Nepitwin/JSON-RPC-Protocol"
+repository = "https://github.com/Nepitwin/JSON-RPC-Protocol"
+
+[build-system]
+requires = [
+    "setuptools >= 67.7.2",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+[tool.distutils.bdist_wheel]
+universal = true
